@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>digital CLOCK</title>
+
+    <style>
+        
+        .container{
+            text-align: center;
+            border: 2px solid grey;
+            background-color: rgb(191, 252, 231);
+            padding:20px 34px;
+            border-radius: 90px;
+            width: 500px;
+            margin: auto;
+        }
+        .container h1{
+            font-weight: bolder;
+            border: 2px solid black;
+            background-color: rgb(177, 245, 177);
+            border-radius: 20px;
+            padding: 10px;
+        }
+        #time{
+            background-color: white;
+            width: 400px;
+            margin: 30px  auto;
+           border: 2px solid black;
+           border-radius: 15px;
+           padding: 15px;
+           font-size: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>This is Clock</h1>
+        <div class="clock" id=time></div>
+    </div>
+
+
+
+    <script>
+        setInterval(displayTime, 1000);
+
+        function displayTime() {
+            let time = new Date();
+            let hrs = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+            let am_pm = 'AM';
+
+            if (hrs > 12) {
+                hrs = hrs - 12;
+                am_pm = 'PM';
+            }
+
+            hrs = hrs < 10 ? hrs = "0" + hrs : hrs;
+            min = min < 10 ? min = "0" + min : min;
+            sec = sec < 10 ? sec = "0" + sec : sec;
+
+            if (hrs == 0) {
+                hrs = 12;
+                am_pm = 'AM';
+            }
+
+            let CurrentTime = hrs + ":" + min + ":" + sec + am_pm;
+            document.getElementById("time")
+                   .innerHTML = CurrentTime;
+            
+        }
+        displayTime();
+
+    </script>
+</body>
+
+</html>
